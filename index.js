@@ -88,9 +88,9 @@ const buildTeam = teamMembers => {
   .then(teamData => {
     teamMembers.team.push(teamData);
     if(teamData.addTeam === 'Finished') {
-      return buildTeam(teamMembers);
-    } else {
       return teamMembers;
+    } else {
+      return buildTeam(teamMembers);
     }
   })
 };
