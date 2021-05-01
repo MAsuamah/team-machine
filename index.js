@@ -2,8 +2,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 //Module Imports
-const Employee = require('./Employee');
-const Employee = require('./Manager')
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
 
 
 const addManager = () => {
@@ -29,9 +29,10 @@ const addManager = () => {
       message: "What is the Team Manager's office Id?"
     }
   ])
-  .then(({managerName}) => {
-    this.manager = new this.manager(na)
-  )
+  .then(function(man) {
+    let manager = new Manager (man.managerName, man.managerId, man.managerEmail, man.managerOffice, 'Manager')
+    console.log(manager)
+  })
 };
 
 const buildTeam = teamMembers => {
