@@ -1,6 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+//Module Imports
+const Employee = require('./Employee');
+const Employee = require('./Manager')
+
 
 const addManager = () => {
   return inquirer.prompt([
@@ -24,7 +28,10 @@ const addManager = () => {
       name: 'managerOffice',
       message: "What is the Team Manager's office Id?"
     }
-  ]);
+  ])
+  .then(({managerName}) => {
+    this.manager = new this.manager(na)
+  )
 };
 
 const buildTeam = teamMembers => {
