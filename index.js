@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+
 
 const addManager = () => {
   return inquirer.prompt([
@@ -97,4 +99,3 @@ const buildTeam = teamMembers => {
 
 addManager()
   .then(buildTeam)
- 
