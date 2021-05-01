@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 
-const generateManager = () => {
+const addManager = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -95,6 +95,6 @@ const buildTeam = teamMembers => {
   })
 };
 
-generateManager()
+addManager()
   .then(buildTeam)
  
