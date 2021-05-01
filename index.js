@@ -4,6 +4,8 @@ const fs = require('fs');
 //Module Imports
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
 
 const addManager = () => {
@@ -36,8 +38,8 @@ const addManager = () => {
 };
 
 const buildTeam = teamMembers => {
-  if (!teamMembers.team) {
-    teamMembers.team = [];
+  if (!teamMembers) {
+    teamMembers= [];
   }
   return inquirer.prompt([
     {
@@ -96,11 +98,18 @@ const buildTeam = teamMembers => {
     },
   ])
   .then(teamData => {
-    teamMembers.team.push(teamData);
-    if(teamData.addTeam === 'Finished') {
-      return teamMembers;
-    } else {
+    if (teamData.addTeam === 'Engineer') {
+      let engineer = new Engineer (teamData.engineerName, teamData.engineerId, teamData.engineerEmail, teamData.engineerGit, 'Engineer')
+      console.log(engineer)
+      teamMembers.push(teamData);
       return buildTeam(teamMembers);
+    } else if (teamData.addTeam === 'Intern') {
+      let intern = new Intern (teamData.internName, teamData.internId, teamData.internEmail, teamData.internSchool, 'Intern')
+      console.log(intern)
+      teamMembers.push(teamData);
+      return buildTeam(teamMembers);
+    } else if (teamData.addTeam === 'Finished') {
+      return teamMembers;
     }
   })
 };
