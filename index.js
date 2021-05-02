@@ -25,7 +25,18 @@ const addManager = () => {
     {
       type: 'input',
       name: 'managerEmail',
-      message: "What is the Team Manager's email?"
+      message: "What is the Team Manager's email?",
+      //Validation Code used from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+      validate: email => {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+  
+        if (valid) {
+            return true;
+        } else {
+            console.log(".  Please enter a valid email")
+            return false;
+        }
+      }
     },
     {
       type: 'input',
@@ -65,7 +76,18 @@ const buildTeam = () => {
       type: 'input',
       name: 'engineerEmail',
       message: "What is the engineer's email?",
-      when: ({ addTeam }) => addTeam === 'Engineer'
+      when: ({ addTeam }) => addTeam === 'Engineer',
+      //Validation Code used from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+      validate: email => {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+  
+        if (valid) {
+            return true;
+        } else {
+            console.log(".  Please enter a valid email")
+            return false;
+        }
+      }
     },
     {
       type: 'input',
@@ -89,7 +111,18 @@ const buildTeam = () => {
       type: 'input',
       name: 'internEmail',
       message: "What is the intern's email?",
-      when: ({ addTeam }) => addTeam === 'Intern'
+      when: ({ addTeam }) => addTeam === 'Intern',
+      //Validation Code used from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
+      validate: email => {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+  
+        if (valid) {
+            return true;
+        } else {
+            console.log(".  Please enter a valid email")
+            return false;
+        }
+      }
     },
     {
       type: 'input',
