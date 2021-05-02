@@ -14,7 +14,7 @@ const generateTeam = teamArr => {
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">${id}</li>
-              <li class="list-group-item">${email}</li>
+              <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
               <li class="list-group-item">${officeNumber}</li>
             </ul>
           </div>
@@ -39,8 +39,8 @@ const generateTeam = teamArr => {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">${id}</li>
-            <li class="list-group-item">${email}</li>
-            <li class="list-group-item">${github}</li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
+            <li class="list-group-item"><a href="https://github.com/${github}" class="badge rounded-pill bg-secondary" target="_blank">${github}</a></li>
           </ul>
         </div>
       `;
@@ -58,8 +58,8 @@ const generateTeam = teamArr => {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">${id}</li>
-            <li class="list-group-item">${email}</li>
-            <li class="list-group-item">${school}$</li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
+            <li class="list-group-item">${school}</li>
           </ul>
         </div>
       `;
