@@ -125,8 +125,7 @@ const writeFile = fileContent => {
       }
 
       resolve({
-        ok: true,
-        message: 'File created!'
+        ok: true
       });
     });
   });
@@ -142,8 +141,7 @@ const copyFile = () => {
           return;
         }
         resolve({
-          ok: true,
-          message: 'Stylesheet and images created!'
+          ok: true
         });
       });
     });
@@ -160,6 +158,7 @@ addManager()
   }) 
   .then(copyFileResponse => {
     copyFile(copyFileResponse);
+    console.log('Success! Your files have been created! Head to the dist folder to find your materials!')
   })
   .catch(err => {
     console.log(err);
