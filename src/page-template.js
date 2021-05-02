@@ -1,4 +1,5 @@
 const generateTeam = teamArr => { 
+
   return `
     ${teamArr
       .filter(({ role }) => role === 'Manager')
@@ -14,8 +15,8 @@ const generateTeam = teamArr => {
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Id: ${id}</li>
-              <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
               <li class="list-group-item">Office Number: ${officeNumber}</li>
+              <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
             </ul>
           </div>
         </div>
@@ -39,8 +40,8 @@ const generateTeam = teamArr => {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Id: ${id}</li>
-            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
             <li class="list-group-item"><a href="https://github.com/${github}" class="badge rounded-pill bg-secondary" target="_blank">GitHub: ${github}</a></li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
           </ul>
         </div>
       `;
@@ -58,13 +59,13 @@ const generateTeam = teamArr => {
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Id: ${id}</li>
-            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
             <li class="list-group-item">School: ${school}</li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
           </ul>
         </div>
       `;
     }).join('')}
-  ` 
+  `  
 }
 
 module.exports = finalTeam => { 

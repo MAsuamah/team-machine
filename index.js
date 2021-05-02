@@ -41,7 +41,7 @@ const addManager = () => {
     {
       type: 'input',
       name: 'managerOffice',
-      message: "What is the Team Manager's office Id?"
+      message: "What is the Team Manager's office number?"
     }
   ])
   .then(function(man) {
