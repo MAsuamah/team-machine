@@ -7,8 +7,10 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
+teamArray = []
+
 const addManager = () => {
-  return inquirer.prompt([
+   return inquirer.prompt([
     {
       type: 'input',
       name: 'managerName',
@@ -33,14 +35,12 @@ const addManager = () => {
   .then(function(man) {
     let manager = new Manager (man.managerName, man.managerId, man.managerEmail, man.managerOffice, 'Manager')
     console.log(manager)
-    return manager
+    teamArray.push(manager)
   })
 };
 
-const buildTeam = teamMembers => {
-  if (!teamMembers) {
-    teamMembers = [];
-  }
+const buildTeam = () => {
+
   return inquirer.prompt([
     {
       type: 'list',
@@ -101,23 +101,25 @@ const buildTeam = teamMembers => {
     if (teamData.addTeam === 'Engineer') {
       let engineer = new Engineer (teamData.engineerName, teamData.engineerId, teamData.engineerEmail, teamData.engineerGit, 'Engineer')
       console.log(engineer)
-      teamMembers.push(teamData);
-      return buildTeam(teamMembers);
+      teamArray.push(teamData);
+      return buildTeam();
     } else if (teamData.addTeam === 'Intern') {
       let intern = new Intern (teamData.internName, teamData.internId, teamData.internEmail, teamData.internSchool, 'Intern')
       console.log(intern)
-      teamMembers.push(teamData);
-      return buildTeam(teamMembers);
+      teamArray.push(teamData);
+      return buildTeam();
     } else if (teamData.addTeam === 'Finished') {
-      console.log(teamMembers)
-      return teamMembers;
+      console.log(teamArray)
+      return teamArray
     }
   })
 };
+
+
 
 addManager()
   .then(buildTeam)
   .then(teamInfo => {
     return generatePage(teamInfo);
-  })
+  }) 
 

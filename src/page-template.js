@@ -1,24 +1,26 @@
 const generateManager = (manager) => { 
-  console.log(manager)
+  
+console.log(manager)
   return `
     <div class="container">
     <div class="row col d-flex justify-content-center">
       <div class="card m-3" style="width: 18rem;" id="man">
         <img class="card-img-top" src="images/manager.png" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">${manager.getName()}</h5>
-          <h6 class="card-text">${manager.getRole()}</h6>
+          <h5 class="card-title"> </h5>
+          <h6 class="card-text"> </h6>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">${manager.getId()}</li>
-          <li class="list-group-item">${manager.getEmail()}</li>
-          <li class="list-group-item">${manager.getOfficeNum()}</li>
+          <li class="list-group-item"> </li>
+          <li class="list-group-item"> </li>
+          <li class="list-group-item"> </li>
         </ul>
       </div>
     </div>
   </div>
   `
-};
+}; 
+
 
 module.exports = mngr => { 
 
@@ -49,7 +51,7 @@ module.exports = mngr => {
       </body>
     </html>
   `;
-};
+}; 
 
 
 
