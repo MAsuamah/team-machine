@@ -1,28 +1,73 @@
-const generateManager = (manager) => { 
-  
-console.log(manager)
+const generateTeam = teamArr => { 
   return `
-    <div class="container">
-    <div class="row col d-flex justify-content-center">
-      <div class="card m-3" style="width: 18rem;" id="man">
-        <img class="card-img-top" src="images/manager.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"> </h5>
-          <h6 class="card-text"> </h6>
+    ${teamArr
+      .filter(({ role }) => role === 'Manager')
+      .map(({ name, id, email, role, officeNumber }) => {
+        return `
+        <div class="container">
+          <div class="row col d-flex justify-content-center">
+            <div class="card m-3" style="width: 18rem;" id="man">
+              <img class="card-img-top" src="manager.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">${name}</h5>
+                <h6 class="card-text">${role}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${id}</li>
+              <li class="list-group-item">${email}</li>
+              <li class="list-group-item">${officeNumber}</li>
+            </ul>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"> </li>
-          <li class="list-group-item"> </li>
-          <li class="list-group-item"> </li>
-        </ul>
       </div>
-    </div>
-  </div>
-  `
-}; 
 
+      <div class="container">
+        <div class="row col d-flex justify-content-center">
+      `;
+    }).join('')} 
+    
 
-module.exports = mngr => { 
+    ${teamArr
+      .filter(({ role }) => role === 'Engineer')
+      .map(({ name, role, id, email, github }) => {
+        return `
+        <div class="card m-3" style="width: 18rem;">
+          <img class="card-img-top" src="engineer.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <h6 class="card-text">${role}</h6>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">${id}</li>
+            <li class="list-group-item">${email}</li>
+            <li class="list-group-item">${github}</li>
+          </ul>
+        </div>
+      `;
+    }).join('')}
+    
+    ${teamArr
+      .filter(({ role }) => role === 'Intern')
+      .map(({ name, role, id, email, school }) => {
+        return `
+        <div class="card m-3" style="width: 18rem;">
+          <img class="card-img-top" src="intern.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <h6 class="card-text">${role}</h6>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">${id}</li>
+            <li class="list-group-item">${email}</li>
+            <li class="list-group-item">${school}$</li>
+          </ul>
+        </div>
+      `;
+    }).join('')}
+  ` 
+}
+
+module.exports = finalTeam => { 
 
   return `
     <!DOCTYPE html>
@@ -47,7 +92,9 @@ module.exports = mngr => {
             <p>The Team Machine</p>
           </div>
         </div>
-        ${generateManager(mngr)}
+          ${generateTeam(finalTeam)}
+          </div>
+        </div>
       </body>
     </html>
   `;

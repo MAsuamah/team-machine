@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generatePage = require('./src/page-template')
+const fileArr = [{src: './src/style.css', dist: './dist/style.css'}, {src: './src/charles-forerunner-3fPXt37X6UQ-unsplash.jpg', dist:'./dist/charles-forerunner-3fPXt37X6UQ-unsplash.jpg'}, {src: './src/manager.png', dist: './dist/manager.png'}, {src: './src/engineer.png', dist: './dist/engineer.png'}, {src: './src/intern.png', dist: './dist/intern.png'}]
 
 //Module Imports
 const Manager = require('./lib/Manager');
@@ -101,25 +102,66 @@ const buildTeam = () => {
     if (teamData.addTeam === 'Engineer') {
       let engineer = new Engineer (teamData.engineerName, teamData.engineerId, teamData.engineerEmail, teamData.engineerGit, 'Engineer')
       console.log(engineer)
-      teamArray.push(teamData);
+      teamArray.push(engineer);
       return buildTeam();
     } else if (teamData.addTeam === 'Intern') {
       let intern = new Intern (teamData.internName, teamData.internId, teamData.internEmail, teamData.internSchool, 'Intern')
       console.log(intern)
-      teamArray.push(teamData);
+      teamArray.push(intern);
       return buildTeam();
     } else if (teamData.addTeam === 'Finished') {
-      console.log(teamArray)
       return teamArray
     }
   })
 };
 
+// writing files
+const writeFile = fileContent => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/index.html', fileContent, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
 
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
+
+// copying file
+const copyFile = () => {
+  fileArr.map(file => {
+    return new Promise((resolve, reject) => {
+      fs.copyFile(file.src, file.dist, err => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve({
+          ok: true,
+          message: 'Stylesheet and images created!'
+        });
+      });
+    });
+  })
+};
 
 addManager()
   .then(buildTeam)
   .then(teamInfo => {
     return generatePage(teamInfo);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
   }) 
+  .then(copyFileResponse => {
+    copyFile(copyFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
