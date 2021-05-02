@@ -46,7 +46,6 @@ const addManager = () => {
   ])
   .then(function(man) {
     let manager = new Manager (man.managerName, man.managerId, man.managerEmail, man.managerOffice, 'Manager')
-    console.log(manager)
     teamArray.push(manager)
   })
 };
@@ -134,12 +133,10 @@ const buildTeam = () => {
   .then(teamData => {
     if (teamData.addTeam === 'Engineer') {
       let engineer = new Engineer (teamData.engineerName, teamData.engineerId, teamData.engineerEmail, teamData.engineerGit, 'Engineer')
-      console.log(engineer)
       teamArray.push(engineer);
       return buildTeam();
     } else if (teamData.addTeam === 'Intern') {
       let intern = new Intern (teamData.internName, teamData.internId, teamData.internEmail, teamData.internSchool, 'Intern')
-      console.log(intern)
       teamArray.push(intern);
       return buildTeam();
     } else if (teamData.addTeam === 'Finished') {
