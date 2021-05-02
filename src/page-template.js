@@ -13,9 +13,9 @@ const generateTeam = teamArr => {
                 <h6 class="card-text">${role}</h6>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${id}</li>
-              <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
-              <li class="list-group-item">${officeNumber}</li>
+              <li class="list-group-item">Id: ${id}</li>
+              <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
+              <li class="list-group-item">Office Number: ${officeNumber}</li>
             </ul>
           </div>
         </div>
@@ -38,9 +38,9 @@ const generateTeam = teamArr => {
             <h6 class="card-text">${role}</h6>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${id}</li>
-            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
-            <li class="list-group-item"><a href="https://github.com/${github}" class="badge rounded-pill bg-secondary" target="_blank">${github}</a></li>
+            <li class="list-group-item">Id: ${id}</li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
+            <li class="list-group-item"><a href="https://github.com/${github}" class="badge rounded-pill bg-secondary" target="_blank">GitHub: ${github}</a></li>
           </ul>
         </div>
       `;
@@ -57,9 +57,9 @@ const generateTeam = teamArr => {
             <h6 class="card-text">${role}</h6>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${id}</li>
-            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">${email}</a></li>
-            <li class="list-group-item">${school}</li>
+            <li class="list-group-item">Id: ${id}</li>
+            <li class="list-group-item"><a href="mailto:${email}" class="badge rounded-pill bg-dark">Email: ${email}</a></li>
+            <li class="list-group-item">School: ${school}</li>
           </ul>
         </div>
       `;
