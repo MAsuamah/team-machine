@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generatePage = require('./src/page-template')
 
 //Module Imports
 const Manager = require('./lib/Manager');
@@ -32,12 +33,13 @@ const addManager = () => {
   .then(function(man) {
     let manager = new Manager (man.managerName, man.managerId, man.managerEmail, man.managerOffice, 'Manager')
     console.log(manager)
+    return manager
   })
 };
 
 const buildTeam = teamMembers => {
   if (!teamMembers) {
-    teamMembers= [];
+    teamMembers = [];
   }
   return inquirer.prompt([
     {
@@ -107,6 +109,7 @@ const buildTeam = teamMembers => {
       teamMembers.push(teamData);
       return buildTeam(teamMembers);
     } else if (teamData.addTeam === 'Finished') {
+      console.log(teamMembers)
       return teamMembers;
     }
   })
@@ -114,3 +117,7 @@ const buildTeam = teamMembers => {
 
 addManager()
   .then(buildTeam)
+  .then(teamInfo => {
+    return generatePage(teamInfo);
+  })
+
