@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generatePage = require('./src/page-template')
+//ARRAY that contains files for styling of the html. The copyFile function will iterate through this array.
 const fileArr = [{src: './src/style.css', dist: './dist/style.css'}, {src: './src/charles-forerunner-3fPXt37X6UQ-unsplash.jpg', dist:'./dist/charles-forerunner-3fPXt37X6UQ-unsplash.jpg'}, {src: './src/manager.png', dist: './dist/manager.png'}, {src: './src/engineer.png', dist: './dist/engineer.png'}, {src: './src/intern.png', dist: './dist/intern.png'}]
 
 //Module Imports
@@ -8,8 +9,10 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
+//Empty array that the entire team will be pushed into. Array will be used as argument to generate html.
 teamArray = []
 
+//Prompt info for Manager
 const addManager = () => {
    return inquirer.prompt([
     {
@@ -45,11 +48,13 @@ const addManager = () => {
     }
   ])
   .then(function(man) {
+    //Create Manager object using user input and push into team Array which will be used to generate Html
     let manager = new Manager (man.managerName, man.managerId, man.managerEmail, man.managerOffice, 'Manager')
     teamArray.push(manager)
   })
 };
 
+//Prompt info for Interns and Engineers
 const buildTeam = () => {
 
   return inquirer.prompt([
@@ -76,7 +81,6 @@ const buildTeam = () => {
       name: 'engineerEmail',
       message: "What is the engineer's email?",
       when: ({ addTeam }) => addTeam === 'Engineer',
-      //Validation Code used from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
       validate: email => {
         valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
   
@@ -111,7 +115,6 @@ const buildTeam = () => {
       name: 'internEmail',
       message: "What is the intern's email?",
       when: ({ addTeam }) => addTeam === 'Intern',
-      //Validation Code used from https://gist.github.com/Amitabh-K/ae073eea3d5207efaddffde19b1618e8
       validate: email => {
         valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
   
@@ -131,14 +134,17 @@ const buildTeam = () => {
     },
   ])
   .then(teamData => {
+    //Create Engineer object if Engineer was selected and push into team Array
     if (teamData.addTeam === 'Engineer') {
       let engineer = new Engineer (teamData.engineerName, teamData.engineerId, teamData.engineerEmail, teamData.engineerGit, 'Engineer')
       teamArray.push(engineer);
       return buildTeam();
+    //Create Intern object if Intern was selected and push into team Array
     } else if (teamData.addTeam === 'Intern') {
       let intern = new Intern (teamData.internName, teamData.internId, teamData.internEmail, teamData.internSchool, 'Intern')
       teamArray.push(intern);
       return buildTeam();
+    //If finished was selected end function and return teamArray
     } else if (teamData.addTeam === 'Finished') {
       return teamArray
     }
@@ -178,6 +184,7 @@ const copyFile = () => {
   })
 };
 
+//Function Call Chain
 addManager()
   .then(buildTeam)
   .then(teamInfo => {

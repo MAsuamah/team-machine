@@ -1,5 +1,6 @@
 const Employee = require('../lib/Employee.js')
 
+
 test('creates an employee object', () => {
   const employee = new Employee('John', '8', 'john@work.com', 'Employee');
 
@@ -9,6 +10,7 @@ test('creates an employee object', () => {
   expect(employee.email).toEqual('john@work.com');
   expect(employee.role).toEqual('Employee');
 });
+
 
 test('checks if able to get name', () => {
   const employee = new Employee('John', '8', 'john@work.com', 'Employee');

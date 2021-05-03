@@ -1,5 +1,5 @@
 const generateTeam = teamArr => { 
-
+//Return specific styling and properties based on team 'role'
   return `
     ${teamArr
       .filter(({ role }) => role === 'Manager')
@@ -69,7 +69,7 @@ const generateTeam = teamArr => {
 }
 
 module.exports = finalTeam => { 
-
+//Return entire completed HTML page
   return `
     <!DOCTYPE html>
     <html lang="en">
