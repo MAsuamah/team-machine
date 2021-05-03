@@ -7,12 +7,12 @@ You must first clone this repository onto your local machine, cd into the root f
 
 
 ## How to Use
-While in the root folder run `node index.js` to start the application. You will be prompted to enter information about your team roster. Enter the information and hit enter for each prompt until you are done building your roster.
+While in the root folder run `node index.js` to start the application. You will be prompted to enter information about your team roster. Enter the information and hit enter for each prompt until you are done building your roster. See the [Walkthrough Video](#walkthrough video)
 Once you choose "Finished" your finished materials will be found in the dist folder. Your team roster will look similar to the following:
 
 ![screencapture-file-Users-michelle-Desktop-projects-team-machine-dist-index-html-2021-05-02-19_55_06](https://user-images.githubusercontent.com/77217156/116832354-d013f880-ab82-11eb-9d8a-8e237d3154af.png)
 
-## Walkthrough Videos
+## Walkthrough Video
 https://drive.google.com/file/d/1nr61zCRr5LMIFOFQjvjePOz5GcTNeL6b/view?usp=sharing
 
 ## Built With
