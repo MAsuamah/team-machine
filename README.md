@@ -13,7 +13,7 @@ Once you choose "Finished" your finished materials will be found in the dist fol
 ![screencapture-file-Users-michelle-Desktop-projects-team-machine-dist-index-html-2021-05-02-19_55_06](https://user-images.githubusercontent.com/77217156/116832354-d013f880-ab82-11eb-9d8a-8e237d3154af.png)
 
 ## Walkthrough-Video
-https://drive.google.com/file/d/1Qg8vsx8lZJaJtrF7rGffAAlLmjsZy7nq/view?usp=sharing
+https://drive.google.com/file/d/1nr61zCRr5LMIFOFQjvjePOz5GcTNeL6b/view?usp=sharing
 
 ## Built With
 Node.js
